@@ -55,9 +55,9 @@ exports = module.exports = function(app, passport) {
   //social login
   app.get('/login/twitter/', passport.authenticate('twitter', { callbackURL: '/login/twitter/callback/' }));
   app.get('/login/twitter/callback/', require('./views/login/index').loginTwitter);
-  app.get('/login/github/', passport.authenticate('github', { callbackURL: '/login/github/callback/' }));
+  app.get('/login/github/', passport.authenticate('github', { callbackURL: '/login/github/callback/', scope: ['user:email'] }));
   app.get('/login/github/callback/', require('./views/login/index').loginGitHub);
-  app.get('/login/facebook/', passport.authenticate('facebook', { callbackURL: '/login/facebook/callback/' }));
+  app.get('/login/facebook/', passport.authenticate('facebook', { callbackURL: '/login/facebook/callback/', scope: ['email'] }));
   app.get('/login/facebook/callback/', require('./views/login/index').loginFacebook);
   
   //admin
